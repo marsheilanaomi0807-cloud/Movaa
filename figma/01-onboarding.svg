@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="812" viewBox="0 0 375 812" font-family="Nunito">
+<defs>
+  <linearGradient id="hill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C6CFEC"/><stop offset="1" stop-color="#B9AFC4"/></linearGradient>
+</defs>
+<rect id="L-Background" x="0" y="0" width="375" height="812" rx="0" fill="#FDF9F5"/>
+<g id="L-Status-bar">
+  <text id="L-time" x="34" y="36" font-family="Poppins" font-size="14" font-weight="600" fill="#1B2233">9:41</text>
+  <rect id="L-dynamic-island" x="131" y="11" width="113" height="31" rx="15.5" fill="#0B0B0C"/>
+  <rect id="L-signal-0" x="300" y="32" width="3" height="4" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-1" x="305" y="29.5" width="3" height="6.5" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-2" x="310" y="27" width="3" height="9" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-3" x="315" y="24" width="3" height="12" rx="1" fill="#1B2233"/>
+  <path id="L-wifi-1" d="M322 27.5a10 10 0 0 1 14 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wifi-2" d="M324.6 30.2a6.3 6.3 0 0 1 8.8 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-wifi-dot" cx="329" cy="33.3" r="1.1" fill="#1B2233"/>
+  <rect id="L-battery" x="341" y="24" width="22" height="11.5" rx="3.2" fill="#1B2233"/>
+</g>
+<g id="L-Header">
+  <text id="L-logo" x="26" y="80" font-family="Poppins" font-size="19" font-weight="800" fill="#6E4048" letter-spacing="0.7">MOVA</text>
+  <text id="L-skip" x="349" y="80" font-family="Nunito" font-size="14.5" font-weight="700" fill="#8A93A8" text-anchor="end">Skip</text>
+</g>
+<g id="L-Headline">
+  <text id="L-welcome-to" x="26" y="150" font-family="Poppins" font-size="33" font-weight="600" fill="#2C3550">Welcome to</text>
+  <text id="L-mova" x="26" y="196" font-family="Poppins" font-size="45" font-weight="800" fill="#6E4048">MOVA</text>
+  <rect id="L-accent-dash" x="26" y="212" width="56" height="4" rx="2" fill="#5AA0E0"/>
+</g>
+<g id="L-Body-copy">
+  <text id="L-lead" x="26" y="258" font-family="Poppins" font-size="18" font-weight="600" fill="#2C3550">Scroll smarter. Feel better.</text>
+  <text id="L-p1" x="26" y="292" font-family="Nunito" font-size="14.5" font-weight="400" fill="#5C6680">MOVA gives you a gentle nudge when it's</text>
+  <text id="L-p2" x="26" y="314" font-family="Nunito" font-size="14.5" font-weight="400" fill="#5C6680">time to adjust your position, take a break, or</text>
+  <text id="L-p3" x="26" y="336" font-family="Nunito" font-size="14.5" font-weight="400" fill="#5C6680">check your surroundings.</text>
+</g>
+<g id="L-Illustration">
+  <ellipse id="hill-back" cx="108" cy="604" rx="118" ry="30" fill="#C7CEE8"/>
+  <ellipse id="hill-right" cx="294" cy="608" rx="98" ry="26" fill="#BFC9E8"/>
+  <ellipse id="hill-front" cx="187.5" cy="622" rx="168" ry="36" fill="url(#hill)"/>
+  <path id="L-stem" d="M187.5 596 V492" fill="none" stroke="#8E7C8C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-leaf-left" d="M187.5 528 c-28-5-42-24-44-46 26-2 42 16 44 46z" fill="#A8B7DE"/>
+  <path id="L-leaf-right" d="M187.5 508 c4-28 24-42 50-42-2 26-20 40-50 42z" fill="#9A8FB8"/>
+  <path id="L-leaf-small" d="M187.5 556 c-22-4-33-18-35-34 21-1 33 12 35 34z" fill="#C0CBE8"/>
+  <circle id="L-dot-a" cx="268" cy="432" r="11" fill="#CDBFC6"/>
+  <circle id="L-dot-b" cx="104" cy="448" r="7" fill="#BFC9E8"/>
+</g>
+<g id="L-Button-Get-Started">
+  <rect id="L-button-bg" x="26" y="668" width="323" height="58" rx="29" fill="#8E6B68"/>
+  <text id="L-label" x="172" y="704" font-family="Poppins" font-size="16.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">Get Started</text>
+  <path id="L-arrow" d="M232 697 h16 M243.5 691.5 249 697 243.5 702.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="L-Page-dots">
+  <rect id="L-dot-active" x="164.5" y="752" width="18" height="7" rx="3.5" fill="#8E6B68"/>
+  <circle id="L-dot-2" cx="193" cy="755.5" r="3.5" fill="#DED2C6"/>
+  <circle id="L-dot-3" cx="207" cy="755.5" r="3.5" fill="#DED2C6"/>
+</g>
+</svg>

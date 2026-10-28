@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="812" viewBox="0 0 375 812" font-family="Nunito">
+<defs>
+  <linearGradient id="score" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8CC8EF"/><stop offset="1" stop-color="#3C82C9"/></linearGradient>
+  <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8CC3EE"/><stop offset="1" stop-color="#4A90D9"/></linearGradient>
+</defs>
+<rect id="L-Background" x="0" y="0" width="375" height="812" rx="0" fill="#FDF9F5"/>
+<g id="L-Status-bar">
+  <text id="L-time" x="34" y="36" font-family="Poppins" font-size="14" font-weight="600" fill="#1B2233">9:41</text>
+  <rect id="L-dynamic-island" x="131" y="11" width="113" height="31" rx="15.5" fill="#0B0B0C"/>
+  <rect id="L-signal-0" x="300" y="32" width="3" height="4" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-1" x="305" y="29.5" width="3" height="6.5" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-2" x="310" y="27" width="3" height="9" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-3" x="315" y="24" width="3" height="12" rx="1" fill="#1B2233"/>
+  <path id="L-wifi-1" d="M322 27.5a10 10 0 0 1 14 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wifi-2" d="M324.6 30.2a6.3 6.3 0 0 1 8.8 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-wifi-dot" cx="329" cy="33.3" r="1.1" fill="#1B2233"/>
+  <rect id="L-battery" x="341" y="24" width="22" height="11.5" rx="3.2" fill="#1B2233"/>
+</g>
+<g id="L-Header">
+  <text id="L-logo" x="22" y="80" font-family="Poppins" font-size="22" font-weight="800" fill="#6E4048" letter-spacing="0.8">MOVA</text>
+  <rect id="L-calendar" x="330" y="68" width="21" height="20" rx="4" fill="none" stroke="#3C82C9" stroke-width="1.9"/>
+  <path id="L-calendar-top" d="M330 75 h21 M336 65 v5 M345 65 v5" fill="none" stroke="#3C82C9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="L-Title">
+  <text id="L-title" x="22" y="128" font-family="Poppins" font-size="29" font-weight="700" fill="#2C3550">Your Habits</text>
+  <text id="L-subtitle" x="22" y="154" font-family="Nunito" font-size="15" font-weight="400" fill="#5C6680">Progress over perfection</text>
+  <path id="L-heart" d="M208.0 155.8 L200.4 147.8 a4.4 4.4 0 1 1 6.4-6.3 l1.3 1.3 l1.3-1.3 a4.4 4.4 0 1 1 6.4 6.3 z" fill="#8F84C4"/>
+</g>
+<g id="L-Position-score">
+  <rect id="L-Score-card" x="22" y="174" width="331" height="100" rx="20" fill="#FFFFFF"/>
+  <path id="L-score-track" d="M 75 224 m 0 -33 a 33 33 0 1 1 0 66 a 33 33 0 1 1 0 -66" fill="none" stroke="#E8F1FA" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-score-fill" d="M 75.00 191.00 A 33 33 0 1 1 45.12 209.99" fill="none" stroke="url(#score)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-label" x="126" y="206" font-family="Poppins" font-size="13.5" font-weight="600" fill="#2C3550">Today's Position Score</text>
+  <text id="L-score-value" x="126" y="240" font-family="Poppins" font-size="31" font-weight="800" fill="#2C3550">82</text>
+  <text id="L-score-max" x="172" y="240" font-family="Poppins" font-size="14" font-weight="600" fill="#5C6680">/ 100</text>
+  <text id="L-message" x="126" y="258" font-family="Nunito" font-size="12" font-weight="400" fill="#5C6680">You're doing great!</text>
+  <path id="L-leaf-a" d="M316.0 221.0 c-6-1-10-5-10-11 7-1 10 4 10 11z" fill="#BBD9EF"/>
+  <path id="L-leaf-b" d="M316.0 218.0 c1-7 5-10 11-10-1 6-4 9-11 10z" fill="#9CC6E8"/>
+</g>
+<g id="L-Stat-grid">
+  <g id="L-Total-Monitored">
+  <rect id="L-Card-Total-Monitored" x="22" y="284" width="160.5" height="68" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="48" cy="310" r="15" fill="#EDE9F8"/>
+  <circle id="L-clock" cx="48" cy="310" r="9" fill="none" stroke="#8F84C4" stroke-width="2"/>
+  <path id="L-hands" d="M48 305 v5 l3.2 2" fill="none" stroke="#8F84C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Total-Monitored" x="72" y="308" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Total Monitored</text>
+  <text id="L-3h-24m" x="72" y="330" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">3h 24m</text>
+  <text id="L-today" x="72" y="345" font-family="Nunito" font-size="10.5" font-weight="400" fill="#8A93A8">today</text>
+</g>
+  <g id="L-Good-Position">
+  <rect id="L-Card-Good-Position" x="192.5" y="284" width="160.5" height="68" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="218.5" cy="310" r="15" fill="#5AA0E0"/>
+  <path id="L-check" d="M213.0 310.5 l4 4.5 l7-9" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Good-Position" x="242.5" y="308" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Good Position</text>
+  <text id="L-2h-41m" x="242.5" y="330" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">2h 41m</text>
+  <text id="L-79-of-time" x="242.5" y="345" font-family="Nunito" font-size="10.5" font-weight="700" fill="#35B8A0">79% of time</text>
+</g>
+  <g id="L-Low-Light-Usage">
+  <rect id="L-Card-Low-Light-Usage" x="22" y="362" width="160.5" height="68" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="48" cy="388" r="15" fill="#EDE9F8"/>
+  <path id="L-moon" d="M56.5 391.4 a8.6 8.6 0 0 1-11.5-11.6 9 9 0 1 0 11.5 11.6z" fill="#6B5FA8"/>
+  <text id="L-Low-Light-Usage" x="72" y="386" font-family="Nunito" font-size="11.5" font-weight="600" fill="#6B5FA8">Low-Light Usage</text>
+  <text id="L-28-min" x="72" y="408" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">28 min</text>
+  <text id="L-14-of-time" x="72" y="423" font-family="Nunito" font-size="10.5" font-weight="700" fill="#3C82C9">14% of time</text>
+</g>
+  <g id="L-Break-Reminders">
+  <rect id="L-Card-Break-Reminders" x="192.5" y="362" width="160.5" height="68" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="218.5" cy="388" r="15" fill="#F6EBE8"/>
+  <path id="L-cup" d="M209.5 385.0 h13 v6 a4 4 0 0 1-4 4 h-5 a4 4 0 0 1-4-4 z" fill="none" stroke="#8E6B68" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-handle" d="M222.5 386.5 h2.2 a2.6 2.6 0 0 1 0 5.2 h-2.2" fill="none" stroke="#8E6B68" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Break-Reminders" x="242.5" y="386" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Break Reminders</text>
+  <text id="L-3" x="242.5" y="408" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">3</text>
+  <text id="L-taken" x="242.5" y="423" font-family="Nunito" font-size="10.5" font-weight="400" fill="#8A93A8">taken</text>
+</g>
+</g>
+<g id="L-Weekly-trend">
+  <rect id="L-Weekly-trend-card" x="22" y="440" width="331" height="166" rx="20" fill="#FFFFFF"/>
+  <text id="L-heading" x="38" y="470" font-family="Poppins" font-size="16.5" font-weight="700" fill="#2C3550">Weekly Trend</text>
+  <rect id="L-track-Mon" x="51.85714285714286" y="514" width="15" height="64" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Mon" x="51.85714285714286" y="540.88" width="15" height="37.12" rx="7.5" fill="url(#bar)"/>
+  <text id="L-lbl-Mon" x="59.35714285714286" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Mon</text>
+  <rect id="L-track-Tue" x="94.57142857142857" y="506" width="15" height="72" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Tue" x="94.57142857142857" y="526.88" width="15" height="51.12" rx="7.5" fill="url(#bar)"/>
+  <text id="L-lbl-Tue" x="102.07142857142857" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Tue</text>
+  <rect id="L-track-Wed" x="137.28571428571428" y="519" width="15" height="59" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Wed" x="137.28571428571428" y="549.09" width="15" height="28.91" rx="7.5" fill="url(#bar)"/>
+  <text id="L-lbl-Wed" x="144.78571428571428" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Wed</text>
+  <rect id="L-track-Thu" x="180.0" y="511" width="15" height="67" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Thu" x="180.0" y="535.12" width="15" height="42.88" rx="7.5" fill="url(#bar)"/>
+  <text id="L-lbl-Thu" x="187.5" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Thu</text>
+  <rect id="L-track-Fri" x="222.71428571428572" y="503" width="15" height="75" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Fri" x="222.71428571428572" y="536.75" width="15" height="41.25" rx="7.5" fill="url(#bar)"/>
+  <text id="L-lbl-Fri" x="230.21428571428572" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Fri</text>
+  <rect id="L-track-Sat" x="265.42857142857144" y="516" width="15" height="62" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Sat" x="265.42857142857144" y="545.76" width="15" height="32.24" rx="7.5" fill="url(#bar)"/>
+  <text id="L-lbl-Sat" x="272.92857142857144" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Sat</text>
+  <rect id="L-track-Sun" x="308.14285714285717" y="496" width="15" height="82" rx="7.5" fill="#EDE7F2"/>
+  <rect id="L-bar-Sun" x="308.14285714285717" y="510.76" width="15" height="67.24" rx="7.5" fill="#2F79C4"/>
+  <text id="L-lbl-Sun" x="315.64285714285717" y="598" font-family="Nunito" font-size="11.5" font-weight="700" fill="#3C82C9" text-anchor="middle">Sun</text>
+  <rect id="L-tooltip-bg" x="300.64285714285717" y="468" width="30" height="20" rx="8" fill="#3C82C9"/>
+  <text id="L-tooltip" x="315.64285714285717" y="482" font-family="Poppins" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">82</text>
+</g>
+<g id="L-Recent-sessions-header">
+  <text id="L-heading" x="22" y="638" font-family="Poppins" font-size="16.5" font-weight="700" fill="#2C3550">Recent Sessions</text>
+  <text id="L-see-all" x="353" y="638" font-family="Nunito" font-size="13.5" font-weight="700" fill="#3C82C9" text-anchor="end">See All</text>
+</g>
+<g id="L-Morning-session">
+  <rect id="L-Session-card" x="22" y="652" width="331" height="62" rx="20" fill="#FFFFFF"/>
+  <circle id="L-sun-core" cx="52" cy="683" r="4.4" fill="#FBBF52"/>
+  <path id="L-ray" d="M59.0 683.0 L62.0 683.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M56.9 687.9 L59.1 690.1" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M52.0 690.0 L52.0 693.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M47.1 687.9 L44.9 690.1" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M45.0 683.0 L42.0 683.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M47.1 678.1 L44.9 675.9" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M52.0 676.0 L52.0 673.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M56.9 678.1 L59.1 675.9" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-session-name" x="80" y="678" font-family="Poppins" font-size="14.5" font-weight="700" fill="#2C3550">Morning Session</text>
+  <text id="L-session-time" x="80" y="696" font-family="Nunito" font-size="12" font-weight="400" fill="#8A93A8">9:12 AM - 10:03 AM</text>
+  <text id="L-session-score" x="318" y="691" font-family="Poppins" font-size="20" font-weight="800" fill="#2C3550" text-anchor="end">92</text>
+  <path id="L-chevron" d="M331 677 l7 7-7 7" fill="none" stroke="#8A93A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="L-Bottom-nav">
+  <path id="L-nav-divider" d="M12 722 H363" fill="none" stroke="#EFE6DC" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-icon-home" d="M70.5 752 L79.0 741 L87.5 752 V762 h-17 z" fill="none" stroke="#8A93A8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-nav-Home" x="79" y="782" font-family="Nunito" font-size="12.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Home</text>
+  <rect id="L-icon-bar-0" x="179.5" y="754" width="4" height="8" rx="1.5" fill="#6B5FA8"/>
+  <rect id="L-icon-bar-1" x="186.0" y="748" width="4" height="14" rx="1.5" fill="#6B5FA8"/>
+  <rect id="L-icon-bar-2" x="192.5" y="751" width="4" height="11" rx="1.5" fill="#6B5FA8"/>
+  <text id="L-nav-History" x="187.5" y="782" font-family="Nunito" font-size="12.5" font-weight="700" fill="#6B5FA8" text-anchor="middle">History</text>
+  <circle id="L-icon-head" cx="296" cy="746" r="3.8" fill="none" stroke="#8A93A8" stroke-width="1.9"/>
+  <path id="L-icon-body" d="M288.5 762 a7.5 7.5 0 0 1 15 0" fill="none" stroke="#8A93A8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-nav-Profile" x="296" y="782" font-family="Nunito" font-size="12.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Profile</text>
+</g>
+</svg>

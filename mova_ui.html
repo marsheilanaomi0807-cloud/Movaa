@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOVA — Phone Usage Posture Detector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FDF9F5;
+  --maroon:#6E4048;
+  --maroon-soft:#8A5A5E;
+  --btn:#8E6B68;
+  --btn-dark:#7A5855;
+  --blue:#5AA0E0;
+  --blue-deep:#3C82C9;
+  --purple:#6B5FA8;
+  --purple-soft:#8F84C4;
+  --teal:#35B8A0;
+  --ink:#2C3550;
+  --ink-2:#5C6680;
+  --ink-3:#8A93A8;
+  --line:#EFE6DC;
+  --card:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:
+    radial-gradient(900px 600px at 8% 10%, #E4E8F7 0%, transparent 55%),
+    radial-gradient(800px 700px at 95% 85%, #EFE0E2 0%, transparent 55%),
+    #FBF5EE;
+  min-height:100vh;color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  padding:32px 20px;
+}
+
+/* ---------- phone frame ---------- */
+.device{position:relative;flex:0 0 auto}
+.phone{
+  position:relative;width:375px;height:812px;border-radius:56px;
+  background:linear-gradient(160deg,#4A4341,#2B2624 45%,#514846);
+  padding:12px;box-shadow:0 44px 90px -30px rgba(60,40,40,.55),0 0 0 1px rgba(0,0,0,.06);
+}
+.phone::after{content:"";position:absolute;right:-3px;top:190px;width:3px;height:92px;border-radius:3px;background:#3B3432}
+.screen{
+  position:relative;width:100%;height:100%;border-radius:45px;overflow:hidden;
+  background:var(--cream);display:flex;flex-direction:column;
+}
+.statusbar{
+  height:48px;flex:0 0 48px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 30px 0 34px;font-family:'Poppins';font-weight:600;font-size:14px;color:#1B2233;z-index:6;
+}
+.island{position:absolute;left:50%;transform:translateX(-50%);top:11px;width:112px;height:31px;border-radius:20px;background:#0B0B0C;z-index:7}
+.sb-right{display:flex;align-items:center;gap:5px}
+
+/* view system */
+.view{display:none;flex:1;min-height:0;flex-direction:column}
+.view.active{display:flex}
+.body{flex:1;min-height:0;overflow-y:auto;padding:0 22px 20px;scrollbar-width:none}
+.body::-webkit-scrollbar{display:none}
+
+.apphead{display:flex;align-items:center;justify-content:space-between;padding:4px 22px 6px}
+.logo{font-family:'Poppins';font-weight:800;font-size:22px;letter-spacing:.04em;color:var(--maroon)}
+.icobtn{width:34px;height:34px;border:none;background:none;cursor:pointer;display:grid;place-items:center;color:var(--ink-2)}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(150deg,#C9D3EE,#A7B4DE);display:grid;place-items:center;color:#5B6899}
+
+h1.big{font-family:'Poppins';font-weight:700;font-size:30px;line-height:1.18;color:var(--ink)}
+.sub{font-size:15px;color:var(--ink-2);margin-top:4px}
+
+/* cards */
+.card{background:var(--card);border-radius:20px;padding:14px 16px;box-shadow:0 8px 22px -14px rgba(90,70,70,.35)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card.stat{padding:12px 11px}
+.stat .lbl{font-size:11.5px;color:var(--ink-2);font-weight:600;line-height:1.2;white-space:nowrap}
+.stat .val{font-family:'Poppins';font-weight:700;font-size:19px;color:var(--ink);margin-top:2px;white-space:nowrap}
+.stat .foot{font-size:10.5px;color:var(--ink-3);margin-top:1px;white-space:nowrap}
+.stat .foot.good{color:var(--teal);font-weight:700}
+.stat .foot.blue{color:var(--blue-deep);font-weight:700}
+.ico-sq{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center}
+.row{display:flex;gap:9px;align-items:flex-start}
+
+/* primary button */
+.btn{
+  width:100%;border:none;cursor:pointer;border-radius:30px;padding:17px;
+  background:var(--btn);color:#fff;font-family:'Poppins';font-weight:600;font-size:16.5px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 14px 26px -14px rgba(142,107,104,.95);transition:.16s;
+}
+.btn:hover{background:var(--btn-dark);transform:translateY(-1px)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.72;cursor:default;transform:none}
+.linkbtn{display:block;width:100%;background:none;border:none;cursor:pointer;margin-top:14px;
+  font-family:'Nunito';font-weight:700;font-size:13.5px;color:var(--btn);text-decoration:underline;text-underline-offset:3px}
+
+/* bottom nav */
+.nav{
+  flex:0 0 auto;display:flex;padding:10px 12px 22px;border-top:1px solid var(--line);
+  background:rgba(253,249,245,.96);backdrop-filter:blur(8px);
+}
+.nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;
+  font-family:'Nunito';font-weight:700;font-size:12.5px;color:var(--ink-3);transition:.15s}
+.nav button.on{color:var(--purple)}
+.nav button:hover{color:var(--purple-soft)}
+
+/* ---------- 01 onboarding ---------- */
+.onb{flex:1;display:flex;flex-direction:column;padding:0 26px 26px}
+.topline{display:flex;align-items:center;justify-content:space-between;padding:4px 0 26px}
+.skip{background:none;border:none;cursor:pointer;font-family:'Nunito';font-weight:700;font-size:14.5px;color:var(--ink-3)}
+.welcome{font-family:'Poppins';font-weight:600;font-size:33px;color:var(--ink);line-height:1.1}
+.welcome b{display:block;font-weight:800;font-size:45px;color:var(--maroon);letter-spacing:.01em;margin-top:2px}
+.dash{width:56px;height:4px;border-radius:4px;background:var(--blue);margin:16px 0 18px}
+.lead{font-family:'Poppins';font-weight:600;font-size:18px;color:var(--ink)}
+.para{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-top:9px}
+.illus{flex:1;min-height:0;display:grid;place-items:center;margin:6px 0}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:16px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#DED2C6}
+.dots i.on{width:18px;border-radius:5px;background:var(--btn)}
+
+/* ---------- 02 calibration ---------- */
+.calwrap{flex:1;display:flex;flex-direction:column;padding:0 26px 26px;text-align:center}
+.calwrap h2{font-family:'Poppins';font-weight:700;font-size:25px;line-height:1.25;color:var(--ink);margin-top:14px}
+.calwrap p.desc{font-size:14px;line-height:1.6;color:var(--ink-2);margin-top:10px}
+.ringbox{flex:1;min-height:0;display:grid;place-items:center;position:relative;margin:4px 0}
+.tip{display:flex;gap:11px;align-items:center;text-align:left;margin-bottom:16px}
+.tip .t1{font-family:'Poppins';font-weight:600;font-size:13.5px;color:var(--ink)}
+.tip .t2{font-size:12.5px;color:var(--ink-3)}
+
+/* ---------- 03 monitoring ---------- */
+.hero{position:relative;display:grid;place-items:center;margin:8px 0 2px}
+.heroC{position:relative;width:215px;height:215px;display:grid;place-items:center;text-align:center}
+.heroC .inner{width:168px;height:168px;border-radius:50%;background:linear-gradient(165deg,#EAF3FC,#D6E8F9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.heroC h3{font-family:'Poppins';font-weight:700;font-size:20px;color:var(--ink);margin-top:6px}
+.heroC small{font-size:11.5px;color:var(--ink-2);line-height:1.45;display:block}
+.pill{
+  margin:14px auto 16px;display:flex;align-items:center;gap:9px;width:fit-content;
+  background:#fff;border-radius:30px;padding:9px 20px;box-shadow:0 8px 20px -12px rgba(90,70,70,.5);
+  font-family:'Poppins';font-weight:600;font-size:14px;color:var(--ink)
+}
+.blip{width:10px;height:10px;border-radius:50%;background:#4CC96B;box-shadow:0 0 0 0 rgba(76,201,107,.6);animation:blip 1.8s infinite}
+@keyframes blip{70%{box-shadow:0 0 0 9px rgba(76,201,107,0)}100%{box-shadow:0 0 0 0 rgba(76,201,107,0)}}
+.ribbon{display:flex;align-items:center;gap:12px;margin-top:11px}
+.ribbon .r1{font-family:'Poppins';font-weight:600;font-size:14.5px;color:var(--ink)}
+.ribbon .r2{font-size:12.5px;color:var(--ink-3)}
+
+/* ---------- 04 alert ---------- */
+.alert{flex:1;display:flex;flex-direction:column;padding:0 24px 24px;text-align:center;
+  background:linear-gradient(180deg,#FBF3F2 0%,#FDF9F5 42%)}
+.alertArt{display:grid;place-items:center;margin:2px 0 4px}
+.alert h2{font-family:'Poppins';font-weight:700;font-size:24px;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:9px}
+.alert .when{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin-top:9px;margin-bottom:16px}
+.advice{display:flex;flex-direction:column;gap:10px;text-align:left}
+.advice .card{display:flex;gap:13px;align-items:center;padding:13px 15px}
+.advice .a1{font-family:'Poppins';font-weight:600;font-size:14.5px;color:var(--ink)}
+.advice .a2{font-size:12.5px;color:var(--ink-3);line-height:1.4;margin-top:1px}
+
+/* ---------- 05 dashboard ---------- */
+.scoreCard{display:flex;align-items:center;gap:12px;padding:15px 13px}
+.scoreCard .t{font-family:'Poppins';font-weight:600;font-size:13.5px;color:var(--ink);white-space:nowrap}
+.scoreCard .n{font-family:'Poppins';font-weight:800;font-size:31px;color:var(--ink);line-height:1.1}
+.scoreCard .n span{font-size:14px;font-weight:600;color:var(--ink-2)}
+.scoreCard .m{font-size:12px;color:var(--ink-2);margin-top:2px}
+.secTitle{font-family:'Poppins';font-weight:700;font-size:16.5px;color:var(--ink)}
+.seeall{background:none;border:none;cursor:pointer;font-family:'Nunito';font-weight:700;font-size:13.5px;color:var(--blue-deep)}
+.chart{display:flex;align-items:flex-end;justify-content:space-between;height:112px;margin-top:22px;gap:6px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer}
+.track{width:15px;border-radius:9px;background:#EDE7F2;display:flex;align-items:flex-end;position:relative}
+.fill{width:100%;border-radius:9px;background:linear-gradient(180deg,#8CC3EE,#4A90D9);transition:.5s}
+.bar span{font-size:11.5px;font-weight:700;color:var(--ink-3)}
+.bar.on .fill{background:linear-gradient(180deg,#5AA0E0,#2F79C4)}
+.bar.on span{color:var(--blue-deep)}
+.tag{position:absolute;top:-26px;left:50%;transform:translateX(-50%);background:var(--blue-deep);color:#fff;
+  font-family:'Poppins';font-weight:700;font-size:11.5px;padding:3px 9px;border-radius:8px;white-space:nowrap}
+.tag::after{content:"";position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:var(--blue-deep);border-bottom:0}
+.session{display:flex;align-items:center;gap:13px;margin-top:10px;cursor:pointer;transition:.15s}
+.session:hover{transform:translateX(2px)}
+.session .s1{font-family:'Poppins';font-weight:700;font-size:14.5px;color:var(--ink)}
+.session .s2{font-size:12px;color:var(--ink-3);margin-top:1px}
+.session .sc{font-family:'Poppins';font-weight:800;font-size:20px;color:var(--ink)}
+
+/* ---------- profile ---------- */
+.prof{display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 0 6px}
+.prof .ava{width:82px;height:82px;border-radius:50%;background:linear-gradient(150deg,#C9D3EE,#A7B4DE);display:grid;place-items:center;color:#5B6899;box-shadow:0 12px 24px -14px rgba(90,80,140,.9)}
+.prof .nm{font-family:'Poppins';font-weight:700;font-size:21px;color:var(--ink);margin-top:11px}
+.prof .em{font-size:13px;color:var(--ink-3)}
+.setRow{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}
+.setRow:last-child{border-bottom:none}
+.setRow .n1{font-family:'Poppins';font-weight:600;font-size:14.5px;color:var(--ink)}
+.setRow .n2{font-size:12px;color:var(--ink-3);margin-top:1px}
+.tgl{width:46px;height:27px;border-radius:20px;background:#E2DAD2;position:relative;cursor:pointer;transition:.2s;border:none;flex:0 0 46px}
+.tgl::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 2px 5px rgba(0,0,0,.18)}
+.tgl.on{background:var(--teal)}
+.tgl.on::after{left:22px}
+
+/* ---------- notification toast ---------- */
+.toast{
+  position:absolute;left:14px;right:14px;top:52px;z-index:20;
+  background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-radius:22px;padding:13px 15px;
+  box-shadow:0 20px 40px -18px rgba(60,45,45,.6);
+  transform:translateY(-160%);transition:transform .45s cubic-bezier(.2,.9,.3,1.2);
+}
+.toast.show{transform:translateY(0)}
+.toast .hd{display:flex;align-items:center;gap:9px;font-family:'Poppins';font-weight:600;font-size:13px;color:var(--ink)}
+.toast .badge{width:22px;height:22px;border-radius:7px;background:var(--btn);color:#fff;display:grid;place-items:center;
+  font-family:'Poppins';font-weight:800;font-size:12px}
+.toast .ago{margin-left:auto;font-size:11.5px;color:var(--ink-3);font-weight:600}
+.toast .ln{font-size:13px;color:var(--ink-2);margin:6px 0 10px}
+.toast .stop{width:100%;border:none;cursor:pointer;background:var(--btn);color:#fff;border-radius:11px;padding:9px;
+  font-family:'Poppins';font-weight:600;font-size:13.5px}
+
+.fade{animation:fade .38s ease}
+@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+@media (max-width:820px){
+  body{padding:20px 14px}
+}
+@media (max-width:430px){
+  .phone{width:100%;max-width:375px;height:min(812px,88vh)}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== PHONE ===================== -->
+<div class="device">
+<div class="phone">
+  <div class="screen">
+    <div class="island"></div>
+
+    <!-- notification toast -->
+    <div class="toast" id="toast">
+      <div class="hd"><span class="badge">M</span> MOVA • Monitoring Active <span class="ago">now</span></div>
+      <div class="ln" id="toastLine">Good position • Still • 18 min</div>
+      <button class="stop" onclick="stopMonitoring()">Stop Monitoring</button>
+    </div>
+
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="sb-right">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="#1B2233"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="5.5" width="3" height="6.5" rx="1"/><rect x="9" y="3" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round"><path d="M1 4.2a10 10 0 0 1 14 0"/><path d="M3.6 6.9a6.3 6.3 0 0 1 8.8 0"/><circle cx="8" cy="10" r="1.1" fill="#1B2233" stroke="none"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3.2" fill="none" stroke="#1B2233" stroke-opacity=".45"/><rect x="2" y="2" width="18" height="8" rx="2" fill="#1B2233"/><path d="M23 4v4a2.2 2.2 0 0 0 0-4z" fill="#1B2233" fill-opacity=".45"/></svg>
+      </span>
+    </div>
+
+    <!-- ============ 01 ONBOARDING ============ -->
+    <section class="view active" id="v-onboarding">
+      <div class="onb">
+        <div class="topline">
+          <span class="logo" style="font-size:19px">MOVA</span>
+          <button class="skip" onclick="go('home')">Skip</button>
+        </div>
+        <div class="welcome">Welcome to <b>MOVA</b></div>
+        <div class="dash"></div>
+        <div class="lead">Scroll smarter. Feel better.</div>
+        <p class="para">MOVA gives you a gentle nudge when it's time to adjust your position, take a break, or check your surroundings.</p>
+
+        <div class="illus">
+          <svg width="250" height="205" viewBox="0 0 250 205" fill="none">
+            <ellipse cx="125" cy="178" rx="118" ry="27" fill="#DDE3F4"/>
+            <path d="M8 178c26-34 58-50 88-40s42 40 74 40 60-16 72-28v28H8z" fill="#C6CFEC"/>
+            <path d="M30 178c22-24 50-34 76-26s40 26 68 26h68v0H30z" fill="#B9AFC4" opacity=".55"/>
+            <path d="M125 178V95" stroke="#8E7C8C" stroke-width="5" stroke-linecap="round"/>
+            <path d="M125 128c-26-4-40-22-42-42 24-2 40 14 42 42z" fill="#A8B7DE"/>
+            <path d="M125 112c4-26 22-40 46-40-2 24-18 38-46 40z" fill="#9A8FB8"/>
+            <path d="M125 150c-20-3-31-16-33-31 19-1 31 10 33 31z" fill="#C0CBE8"/>
+            <circle cx="196" cy="58" r="11" fill="#CDBFC6"/>
+            <circle cx="52" cy="70" r="7" fill="#BFC9E8"/>
+          </svg>
+        </div>
+
+        <button class="btn" onclick="go('calibration')">Get Started
+          <svg width="19" height="15" viewBox="0 0 19 15" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7.5h16M11.5 2 17 7.5 11.5 13"/></svg>
+        </button>
+        <div class="dots"><i class="on"></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============ 02 CALIBRATION ============ -->
+    <section class="view" id="v-calibration">
+      <div class="calwrap">
+        <div class="topline" style="padding-bottom:6px">
+          <button class="icobtn" onclick="go('onboarding')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <span class="logo" style="font-size:20px">MOVA</span>
+          <span style="width:34px"></span>
+        </div>
+        <h2>Find Your<br>Comfortable Position</h2>
+        <p class="desc">Hold your phone naturally for a few seconds so MOVA can learn your usual position.</p>
+
+        <div class="ringbox">
+          <div style="position:relative;width:206px;height:206px;display:grid;place-items:center">
+            <svg width="206" height="206" viewBox="0 0 212 212" style="position:absolute;transform:rotate(-90deg)">
+              <defs><linearGradient id="calg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#9AA8DC"/><stop offset="55%" stop-color="#7E8FD0"/><stop offset="100%" stop-color="#7FB4E4"/>
+              </linearGradient></defs>
+              <circle cx="106" cy="106" r="94" stroke="#E7E2F0" stroke-width="15" fill="none"/>
+              <circle id="calArc" cx="106" cy="106" r="94" stroke="url(#calg)" stroke-width="15" fill="none"
+                stroke-linecap="round" stroke-dasharray="590.6" stroke-dashoffset="590.6" style="transition:stroke-dashoffset .35s linear"/>
+            </svg>
+            <div style="width:148px;height:148px;border-radius:50%;background:linear-gradient(160deg,#EFEDF8,#DEE6F6);display:grid;place-items:center">
+              <svg width="56" height="89" viewBox="0 0 58 92" id="calPhone" style="transform-origin:center;transition:transform .12s linear">
+                <rect x="1.5" y="1.5" width="55" height="89" rx="12" fill="#EDF1FA" stroke="#6A7396" stroke-width="3"/>
+                <rect x="21" y="7" width="16" height="3.4" rx="1.7" fill="#6A7396"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div id="calState" style="font-family:'Poppins';font-weight:600;font-size:16px;color:var(--ink-2)">Ready when you are</div>
+        <div id="calPct" style="font-family:'Poppins';font-weight:800;font-size:38px;color:var(--ink);margin:2px 0 16px">0%</div>
+
+        <div class="card tip">
+          <div class="ico-sq" style="background:#F3EEFB">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#7B6BB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 2a6.5 6.5 0 0 0-4 11.7V15h8v-1.3A6.5 6.5 0 0 0 12 2z"/></svg>
+          </div>
+          <div><div class="t1">Just be yourself!</div><div class="t2">There's no right or wrong way.</div></div>
+        </div>
+
+        <button class="btn" id="calBtn" onclick="calButton()">Start Calibration</button>
+      </div>
+    </section>
+
+    <!-- ============ 03 LIVE MONITORING ============ -->
+    <section class="view" id="v-home">
+      <div class="apphead">
+        <span class="logo">MOVA</span>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button class="icobtn" onclick="showToast()">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          </button>
+          <div class="avatar" onclick="go('profile')" style="cursor:pointer">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="body">
+        <h1 class="big" style="font-size:27px;color:#2F3D63">Hai, Naomi! 👋</h1>
+        <p class="sub" style="font-size:14px">Small habits make a big difference.</p>
+
+        <div class="hero">
+          <div class="heroC">
+            <svg width="215" height="215" viewBox="0 0 215 215" style="position:absolute;transform:rotate(-90deg)">
+              <circle cx="107.5" cy="107.5" r="98" stroke="#DFEDFA" stroke-width="13" fill="none"/>
+              <circle id="posArc" cx="107.5" cy="107.5" r="98" stroke="#5AA0E0" stroke-width="13" fill="none" stroke-linecap="round"
+                stroke-dasharray="615.7" stroke-dashoffset="49" style="transition:stroke-dashoffset .6s ease,stroke .4s"/>
+            </svg>
+            <svg width="215" height="215" viewBox="0 0 215 215" style="position:absolute;transition:opacity .4s" id="sparks" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round">
+              <path d="M16 78l-13-5M20 60l-11-9M30 44l-8-12"/><path d="M199 78l13-5M195 60l11-9M185 44l8-12"/>
+            </svg>
+            <div class="inner">
+              <svg width="58" height="58" viewBox="0 0 60 60" id="face">
+                <circle id="faceBg" cx="30" cy="30" r="27" fill="#6DAEEA" style="transition:fill .4s"/>
+                <circle cx="21" cy="25" r="3.1" fill="#fff"/><circle cx="39" cy="25" r="3.1" fill="#fff"/>
+                <path id="mouth" d="M20 35c3.4 5.2 16.6 5.2 20 0" stroke="#fff" stroke-width="3.1" fill="none" stroke-linecap="round"/>
+              </svg>
+              <h3 id="posTitle">Good Position</h3>
+              <small id="posSub">Keep it up!<br>You're doing great.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="pill"><span class="blip" id="blip"></span><span id="pillText">Monitoring Active</span></div>
+
+        <div class="grid2">
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#E3EEFB">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+            </div>
+            <div><div class="lbl">Session Time</div><div class="val" id="sessTime">0 sec</div><div class="foot">Today</div></div>
+          </div>
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#E3EEFB">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="#4A90D9"><rect x="2" y="12" width="4" height="9" rx="1.5"/><rect x="8.5" y="6" width="4" height="15" rx="1.5"/><rect x="15" y="9" width="4" height="12" rx="1.5"/></svg>
+            </div>
+            <div><div class="lbl">Position Score</div><div class="val"><span id="posScore">92</span> <span style="font-size:14px;color:var(--ink-2)">/ 100</span></div><div class="foot good" id="posGrade">Great</div></div>
+          </div>
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#FDF0DC">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round"><circle cx="12" cy="12" r="4.4" fill="#FBBF52" stroke="none"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M5 5l1.9 1.9M17.1 17.1 19 19M19 5l-1.9 1.9M6.9 17.1 5 19"/></svg>
+            </div>
+            <div><div class="lbl">Environment</div><div class="val" id="envVal">Bright</div><div class="foot" id="envFoot">Looks good</div></div>
+          </div>
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#E3EEFB">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3" stroke-linecap="round"/></svg>
+            </div>
+            <div><div class="lbl">Activity</div><div class="val" id="actVal">Still</div><div class="foot good" id="actFoot">Monitoring normally</div></div>
+          </div>
+        </div>
+
+        <div class="card ribbon" style="margin-top:11px">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <path d="M15 27V13" stroke="#8FBBE0" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M15 18C9 17 5 13 5 7c7-1 10 4 10 11z" fill="#A9CEEA"/>
+            <path d="M15 15c1-7 5-10 11-10-1 6-4 9-11 10z" fill="#89B8DF"/>
+          </svg>
+          <div style="flex:1"><div class="r1">Healthy habits today</div><div class="r2">A brighter you tomorrow</div></div>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8F84C4" stroke-width="1.9"><path d="M12 20.5 3.6 12.3a4.9 4.9 0 1 1 7-6.9l1.4 1.4 1.4-1.4a4.9 4.9 0 1 1 7 6.9z"/></svg>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="on" onclick="go('home')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-4v-6h-7v6h-4a1 1 0 0 1-1-1z"/></svg>
+          Home</button>
+        <button onclick="go('dashboard')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="13" width="4" height="8" rx="1.5"/><rect x="10" y="7" width="4" height="14" rx="1.5"/><rect x="17.5" y="10" width="4" height="11" rx="1.5"/></svg>
+          History</button>
+        <button onclick="go('profile')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          Profile</button>
+      </nav>
+    </section>
+
+    <!-- ============ 04 ALERT ============ -->
+    <section class="view" id="v-alert">
+      <div class="alert">
+        <div class="topline" style="padding-bottom:4px">
+          <span class="logo" style="font-size:20px">MOVA</span>
+          <button class="icobtn" onclick="dismissAlert()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+
+        <div class="alertArt">
+          <svg width="212" height="146" viewBox="0 0 215 150" fill="none">
+            <ellipse cx="100" cy="82" rx="74" ry="58" fill="#E2E4F3"/>
+            <g transform="rotate(-11 100 78)">
+              <rect x="74" y="32" width="54" height="94" rx="12" fill="#FDFCFB" stroke="#7A7FA4" stroke-width="3.2"/>
+              <rect x="93" y="38" width="16" height="3.4" rx="1.7" fill="#7A7FA4"/>
+            </g>
+            <path d="M52 54c-4 6-4 14 0 20M42 47c-7 10-7 24 0 34" stroke="#9AA0C6" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M152 54c4 6 4 14 0 20M162 47c7 10 7 24 0 34" stroke="#9AA0C6" stroke-width="3.4" stroke-linecap="round"/>
+            <circle cx="160" cy="36" r="24" fill="#8A5A5E"/>
+            <path d="M160 25v14" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/>
+            <circle cx="160" cy="46" r="2.6" fill="#fff"/>
+          </svg>
+        </div>
+
+        <h2>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A5A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2.5 21.5 9.5M16 4 9 8l-4 8 8-4 4-7M8 16l-5 5"/></svg>
+          Needs Adjustment
+        </h2>
+        <p class="when">You've been holding this position<br>for a while (<span id="alertDur">15 sec</span>).</p>
+
+        <div class="advice">
+          <div class="card">
+            <div class="ico-sq" style="background:#EAF2FC">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M6 10.5 12 4.5l6 6"/></svg>
+            </div>
+            <div><div class="a1">Raise your phone slightly</div><div class="a2">Bring it closer to eye level.</div></div>
+          </div>
+          <div class="card">
+            <div class="ico-sq" style="background:#EAF2FC">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13.5 6.5 19.5 12l-6 5.5"/></svg>
+            </div>
+            <div><div class="a1">Tilt slightly to the right</div><div class="a2">Try to keep your screen centered in front of you.</div></div>
+          </div>
+          <div class="card">
+            <div class="ico-sq" style="background:#EAF2FC">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="#4A90D9"><rect x="6" y="4" width="4" height="16" rx="1.6"/><rect x="14" y="4" width="4" height="16" rx="1.6"/></svg>
+            </div>
+            <div><div class="a1">Take a short break</div><div class="a2">Give your eyes a rest.</div></div>
+          </div>
+        </div>
+
+        <button class="btn" style="margin-top:20px" onclick="dismissAlert()">Got it!</button>
+        <button class="linkbtn" onclick="snooze()">Remind me in 5 minutes</button>
+      </div>
+    </section>
+
+    <!-- ============ 05 DASHBOARD ============ -->
+    <section class="view" id="v-dashboard">
+      <div class="apphead">
+        <span class="logo">MOVA</span>
+        <button class="icobtn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="1.9" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="17" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><rect x="7" y="13" width="3" height="3" rx="1" fill="#4A90D9" stroke="none"/><rect x="14" y="13" width="3" height="3" rx="1" fill="#4A90D9" stroke="none"/></svg>
+        </button>
+      </div>
+
+      <div class="body">
+        <h1 class="big" style="font-size:29px">Your Habits</h1>
+        <p class="sub" style="display:flex;align-items:center;gap:7px">Progress over perfection
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#8F84C4"><path d="M12 21 3.6 12.8a4.9 4.9 0 1 1 7-6.9l1.4 1.4 1.4-1.4a4.9 4.9 0 1 1 7 6.9z"/></svg>
+        </p>
+
+        <div class="card scoreCard" style="margin-top:14px">
+          <svg width="76" height="76" viewBox="0 0 84 84" style="transform:rotate(-90deg);flex:0 0 76px">
+            <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8CC8EF"/><stop offset="100%" stop-color="#3C82C9"/></linearGradient></defs>
+            <circle cx="42" cy="42" r="33" stroke="#E8F1FA" stroke-width="13" fill="none"/>
+            <circle cx="42" cy="42" r="33" stroke="url(#dg)" stroke-width="13" fill="none" stroke-linecap="round"
+              stroke-dasharray="207.3" stroke-dashoffset="37.3"/>
+          </svg>
+          <div style="flex:1">
+            <div class="t">Today's Position Score</div>
+            <div class="n">82 <span>/ 100</span></div>
+            <div class="m">You're doing great!</div>
+          </div>
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <path d="M15 25c-8-2-12-8-12-16 9-1 13 6 12 16z" fill="#BBD9EF"/>
+            <path d="M15 22c0-8 5-12 12-12 0 7-4 11-12 12z" fill="#9CC6E8"/>
+          </svg>
+        </div>
+
+        <div class="grid2" style="margin-top:11px">
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#EDE9F8">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#7B6BB8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+            </div>
+            <div><div class="lbl">Total Monitored</div><div class="val">3h 24m</div><div class="foot">today</div></div>
+          </div>
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#5AA0E0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+            </div>
+            <div><div class="lbl">Good Position</div><div class="val">2h 41m</div><div class="foot good">79% of time</div></div>
+          </div>
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#EDE9F8">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="#7B6BB8"><path d="M20.5 15.4A8.6 8.6 0 0 1 9 3.8a9 9 0 1 0 11.5 11.6z"/></svg>
+            </div>
+            <div><div class="lbl" style="color:var(--purple);font-weight:700">Low-Light Usage</div><div class="val">28 min</div><div class="foot blue">14% of time</div></div>
+          </div>
+          <div class="card stat row">
+            <div class="ico-sq" style="background:#F6EBE8">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8E6B68" stroke-width="1.9" stroke-linecap="round"><path d="M3 9h13v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M16 10.5h2.2a2.6 2.6 0 0 1 0 5.2H16"/><path d="M6.5 5.5V3M10 5.5V3M13.5 5.5V3"/></svg>
+            </div>
+            <div><div class="lbl">Break Reminders</div><div class="val">3</div><div class="foot">taken</div></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:11px;padding:16px">
+          <div class="secTitle">Weekly Trend</div>
+          <div class="chart" id="chart">
+            <div class="bar" data-v="58"><div class="track" style="height:78px"><div class="fill" style="height:58%"></div></div><span>Mon</span></div>
+            <div class="bar" data-v="71"><div class="track" style="height:88px"><div class="fill" style="height:71%"></div></div><span>Tue</span></div>
+            <div class="bar" data-v="49"><div class="track" style="height:72px"><div class="fill" style="height:49%"></div></div><span>Wed</span></div>
+            <div class="bar" data-v="64"><div class="track" style="height:82px"><div class="fill" style="height:64%"></div></div><span>Thu</span></div>
+            <div class="bar" data-v="55"><div class="track" style="height:92px"><div class="fill" style="height:55%"></div></div><span>Fri</span></div>
+            <div class="bar" data-v="52"><div class="track" style="height:76px"><div class="fill" style="height:52%"></div></div><span>Sat</span></div>
+            <div class="bar on" data-v="82"><div class="track" style="height:100px"><div class="tag">82</div><div class="fill" style="height:82%"></div></div><span>Sun</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px">
+          <span class="secTitle">Recent Sessions</span>
+          <button class="seeall">See All</button>
+        </div>
+
+        <div class="card session">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round"><circle cx="12" cy="12" r="4.4" fill="#FBBF52" stroke="none"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M5 5l1.9 1.9M17.1 17.1 19 19M19 5l-1.9 1.9M6.9 17.1 5 19"/></svg>
+          <div style="flex:1"><div class="s1">Morning Session</div><div class="s2">9:12 AM – 10:03 AM</div></div>
+          <span class="sc">92</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A93A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+        <div class="card session">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#7B6BB8"><path d="M20.5 15.4A8.6 8.6 0 0 1 9 3.8a9 9 0 1 0 11.5 11.6z"/></svg>
+          <div style="flex:1"><div class="s1">Evening Session</div><div class="s2">8:30 PM – 9:14 PM</div></div>
+          <span class="sc">74</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A93A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button onclick="go('home')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-4v-6h-7v6h-4a1 1 0 0 1-1-1z"/></svg>
+          Home</button>
+        <button class="on" onclick="go('dashboard')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="13" width="4" height="8" rx="1.5"/><rect x="10" y="7" width="4" height="14" rx="1.5"/><rect x="17.5" y="10" width="4" height="11" rx="1.5"/></svg>
+          History</button>
+        <button onclick="go('profile')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          Profile</button>
+      </nav>
+    </section>
+
+    <!-- ============ PROFILE ============ -->
+    <section class="view" id="v-profile">
+      <div class="apphead"><span class="logo">MOVA</span></div>
+      <div class="body">
+        <div class="prof">
+          <div class="ava"><svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0z"/></svg></div>
+          <div class="nm">Naomi</div>
+          <div class="em">Baseline personal tersimpan ✓</div>
+        </div>
+
+        <div class="card" style="margin-top:16px;padding:6px 16px">
+          <div class="setRow">
+            <div class="ico-sq" style="background:#E3EEFB">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/></svg>
+            </div>
+            <div style="flex:1"><div class="n1">Background Monitoring</div><div class="n2">Pantau posisi walau berpindah aplikasi</div></div>
+            <button class="tgl on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="setRow">
+            <div class="ico-sq" style="background:#F6EBE8">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E6B68" stroke-width="1.9" stroke-linecap="round"><path d="M3 9h13v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M16 10.5h2.2a2.6 2.6 0 0 1 0 5.2H16"/></svg>
+            </div>
+            <div style="flex:1"><div class="n1">Break Reminder</div><div class="n2">Ingatkan setiap 30 menit</div></div>
+            <button class="tgl on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="setRow">
+            <div class="ico-sq" style="background:#EDE9F8">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#7B6BB8"><path d="M20.5 15.4A8.6 8.6 0 0 1 9 3.8a9 9 0 1 0 11.5 11.6z"/></svg>
+            </div>
+            <div style="flex:1"><div class="n1">Low-Light Detection</div><div class="n2">Pengingat saat cahaya terlalu redup</div></div>
+            <button class="tgl on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="setRow">
+            <div class="ico-sq" style="background:#E6F6F2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#35B8A0" stroke-width="2" stroke-linecap="round"><path d="M12 5.5V2.5L8 6l4 3.5V6.5a6 6 0 1 1-5.8 7.6"/></svg>
+            </div>
+            <div style="flex:1"><div class="n1">Context Awareness</div><div class="n2">Toleransi otomatis saat berjalan / di kendaraan</div></div>
+            <button class="tgl on" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+
+        <button class="btn" style="margin-top:18px" onclick="go('calibration')">Kalibrasi Ulang</button>
+      </div>
+
+      <nav class="nav">
+        <button onclick="go('home')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-4v-6h-7v6h-4a1 1 0 0 1-1-1z"/></svg>
+          Home</button>
+        <button onclick="go('dashboard')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="13" width="4" height="8" rx="1.5"/><rect x="10" y="7" width="4" height="14" rx="1.5"/><rect x="17.5" y="10" width="4" height="11" rx="1.5"/></svg>
+          History</button>
+        <button class="on" onclick="go('profile')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0" stroke-linecap="round"/></svg>
+          Profile</button>
+      </nav>
+    </section>
+
+  </div>
+</div>
+</div>
+
+<script>
+/* ============================ navigation ============================ */
+var current = 'onboarding';
+
+function go(name){
+  var next = document.getElementById('v-' + name);
+  if(!next) return;
+  var views = document.querySelectorAll('.view');
+  for(var i = 0; i < views.length; i++) views[i].classList.remove('active');
+  next.classList.add('active');
+  next.classList.remove('fade'); void next.offsetWidth; next.classList.add('fade');
+  var b = next.querySelector('.body'); if(b) b.scrollTop = 0;
+  current = name;
+
+  if(name === 'home') startMonitoring();
+  if(name === 'calibration') resetCalibration();
+  if(name === 'alert') hideToast();
+}
+
+/* ============================ 02 calibration ============================ */
+var CIRC = 590.6, calTimer = null, calVal = 0, calDone = false;
+
+function resetCalibration(){
+  clearInterval(calTimer);
+  calVal = 0; calDone = false;
+  document.getElementById('calArc').style.strokeDashoffset = CIRC;
+  document.getElementById('calPct').textContent = '0%';
+  document.getElementById('calState').textContent = 'Ready when you are';
+  document.getElementById('calBtn').textContent = 'Start Calibration';
+  document.getElementById('calBtn').disabled = false;
+  document.getElementById('calPhone').style.transform = 'rotate(0deg)';
+}
+
+function calButton(){
+  if(calDone){ go('home'); return; }
+  startCalibration();
+}
+
+function startCalibration(){
+  clearInterval(calTimer);
+  var btn = document.getElementById('calBtn');
+  btn.disabled = true;
+  btn.textContent = 'Calibrating…';
+  document.getElementById('calState').textContent = 'Keep holding…';
+
+  calTimer = setInterval(function(){
+    calVal += 2;
+    if(calVal >= 100){
+      calVal = 100;
+      clearInterval(calTimer);
+      calDone = true;
+      document.getElementById('calState').textContent = 'Baseline tersimpan ✓';
+      btn.textContent = 'Mulai Monitoring';
+      btn.disabled = false;
+      setTimeout(function(){ if(current === 'calibration') go('home'); }, 1500);
+    }
+    document.getElementById('calArc').style.strokeDashoffset = CIRC * (1 - calVal / 100);
+    document.getElementById('calPct').textContent = calVal + '%';
+    var tilt = Math.sin(calVal / 7) * 4;
+    document.getElementById('calPhone').style.transform = 'rotate(' + tilt.toFixed(1) + 'deg)';
+  }, 60);
+}
+
+/* ============================ 03 monitoring ============================ */
+var seconds = 0, monTimer = null, alerted = false, snoozeUntil = 0, alertAt = 15, THRESHOLD = 15;
+
+function startMonitoring(){
+  if(monTimer) return;
+  monTimer = setInterval(tick, 1000);
+  document.getElementById('blip').style.display = '';
+  document.getElementById('pillText').textContent = 'Monitoring Active';
+}
+
+function stopMonitoring(){
+  clearInterval(monTimer); monTimer = null;
+  document.getElementById('blip').style.display = 'none';
+  document.getElementById('pillText').textContent = 'Monitoring Paused';
+  hideToast();
+}
+
+function tick(){
+  seconds++;
+  document.getElementById('sessTime').textContent =
+    seconds < 60 ? seconds + ' sec' : Math.floor(seconds / 60) + ' min';
+
+  if(seconds === 6) showToast();
+
+  /* posisi keluar dari rentang nyaman & bertahan melewati threshold -> feedback */
+  if(!alerted && seconds >= alertAt && Date.now() > snoozeUntil && current === 'home'){
+    alerted = true;
+    setBad();
+    setTimeout(function(){ if(current === 'home') go('alert'); }, 1000);
+  }
+}
+
+function label(){ return seconds < 60 ? seconds + ' sec' : Math.floor(seconds / 60) + ' min'; }
+
+function setBad(){
+  var arc = document.getElementById('posArc');
+  arc.setAttribute('stroke', '#E0A94A');
+  arc.style.strokeDashoffset = '215';
+  document.getElementById('posTitle').textContent = 'Needs Adjustment';
+  document.getElementById('posSub').innerHTML = 'Posisi bertahan terlalu lama.<br>Coba sesuaikan sedikit.';
+  document.getElementById('mouth').setAttribute('d', 'M20 38c3.4-5.2 16.6-5.2 20 0');
+  document.getElementById('faceBg').setAttribute('fill', '#E7B25C');
+  document.getElementById('sparks').style.opacity = '0';
+  document.getElementById('posScore').textContent = '68';
+  var g = document.getElementById('posGrade');
+  g.textContent = 'Adjust'; g.style.color = '#D9963A';
+  document.getElementById('alertDur').textContent = THRESHOLD + ' sec';
+  document.getElementById('toastLine').textContent = 'Needs adjustment • Still • ' + label();
+}
+
+function setGood(){
+  var arc = document.getElementById('posArc');
+  arc.setAttribute('stroke', '#5AA0E0');
+  arc.style.strokeDashoffset = '49';
+  document.getElementById('posTitle').textContent = 'Good Position';
+  document.getElementById('posSub').innerHTML = "Keep it up!<br>You're doing great.";
+  document.getElementById('mouth').setAttribute('d', 'M20 35c3.4 5.2 16.6 5.2 20 0');
+  document.getElementById('faceBg').setAttribute('fill', '#6DAEEA');
+  document.getElementById('sparks').style.opacity = '1';
+  document.getElementById('posScore').textContent = '92';
+  var g = document.getElementById('posGrade');
+  g.textContent = 'Great'; g.style.color = '';
+  document.getElementById('toastLine').textContent = 'Good position • Still • ' + label();
+}
+
+/* ============================ 04 alert actions ============================ */
+function dismissAlert(){
+  setGood();
+  alerted = false;
+  alertAt = seconds + 30;   /* posisi dikoreksi, monitoring lanjut */
+  go('home');
+}
+
+function snooze(){
+  snoozeUntil = Date.now() + 5 * 60 * 1000;
+  setGood();
+  alerted = false;
+  go('home');
+}
+
+/* ============================ toast ============================ */
+var toastTimer = null;
+
+function showToast(){
+  if(current !== 'home') return;
+  document.getElementById('toast').classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(hideToast, 4500);
+}
+
+function hideToast(){ document.getElementById('toast').classList.remove('show'); }
+
+/* ============================ weekly trend ============================ */
+var bars = document.querySelectorAll('#chart .bar');
+for(var n = 0; n < bars.length; n++){
+  bars[n].addEventListener('click', function(){
+    for(var m = 0; m < bars.length; m++){
+      bars[m].classList.remove('on');
+      var old = bars[m].querySelector('.tag');
+      if(old) old.parentNode.removeChild(old);
+    }
+    this.classList.add('on');
+    var tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.textContent = this.dataset.v;
+    this.querySelector('.track').insertBefore(tag, this.querySelector('.fill'));
+  });
+}
+</script>
+</body>
+</html>

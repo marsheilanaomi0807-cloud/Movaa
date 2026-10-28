@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="812" viewBox="0 0 375 812" font-family="Nunito">
+<defs>
+  <linearGradient id="calArc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9AA8DC"/><stop offset="1" stop-color="#7FB4E4"/></linearGradient>
+  <linearGradient id="calIn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EFEDF8"/><stop offset="1" stop-color="#DEE6F6"/></linearGradient>
+</defs>
+<rect id="L-Background" x="0" y="0" width="375" height="812" rx="0" fill="#FDF9F5"/>
+<g id="L-Status-bar">
+  <text id="L-time" x="34" y="36" font-family="Poppins" font-size="14" font-weight="600" fill="#1B2233">9:41</text>
+  <rect id="L-dynamic-island" x="131" y="11" width="113" height="31" rx="15.5" fill="#0B0B0C"/>
+  <rect id="L-signal-0" x="300" y="32" width="3" height="4" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-1" x="305" y="29.5" width="3" height="6.5" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-2" x="310" y="27" width="3" height="9" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-3" x="315" y="24" width="3" height="12" rx="1" fill="#1B2233"/>
+  <path id="L-wifi-1" d="M322 27.5a10 10 0 0 1 14 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wifi-2" d="M324.6 30.2a6.3 6.3 0 0 1 8.8 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-wifi-dot" cx="329" cy="33.3" r="1.1" fill="#1B2233"/>
+  <rect id="L-battery" x="341" y="24" width="22" height="11.5" rx="3.2" fill="#1B2233"/>
+</g>
+<g id="L-Header">
+  <path id="L-back-arrow" d="M40 74 l-7 7 7 7" fill="none" stroke="#5C6680" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-logo" x="187.5" y="82" font-family="Poppins" font-size="20" font-weight="800" fill="#6E4048" text-anchor="middle" letter-spacing="0.7">MOVA</text>
+</g>
+<g id="L-Title">
+  <text id="L-t1" x="187.5" y="136" font-family="Poppins" font-size="25" font-weight="700" fill="#2C3550" text-anchor="middle">Find Your</text>
+  <text id="L-t2" x="187.5" y="167" font-family="Poppins" font-size="25" font-weight="700" fill="#2C3550" text-anchor="middle">Comfortable Position</text>
+  <text id="L-d1" x="187.5" y="198" font-family="Nunito" font-size="14" font-weight="400" fill="#5C6680" text-anchor="middle">Hold your phone naturally for a few</text>
+  <text id="L-d2" x="187.5" y="218" font-family="Nunito" font-size="14" font-weight="400" fill="#5C6680" text-anchor="middle">seconds so MOVA can learn your usual</text>
+  <text id="L-d3" x="187.5" y="238" font-family="Nunito" font-size="14" font-weight="400" fill="#5C6680" text-anchor="middle">position.</text>
+</g>
+<g id="L-Calibration-ring">
+  <path id="L-calibration-track" d="M 187.5 372 m 0 -94 a 94 94 0 1 1 0 188 a 94 94 0 1 1 0 -188" fill="none" stroke="#E7E2F0" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-calibration-fill" d="M 187.50 278.00 A 94 94 0 1 1 102.49 412.12" fill="none" stroke="url(#calArc)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-inner-disc" cx="187.5" cy="372" r="74" fill="url(#calIn)"/>
+  <rect id="L-phone-body" x="159.5" y="327.5" width="56" height="89" rx="12" fill="#EDF1FA" stroke="#6A7396" stroke-width="3"/>
+  <rect id="L-phone-speaker" x="179.5" y="333" width="16" height="3.4" rx="1.7" fill="#6A7396"/>
+</g>
+<g id="L-Progress-text">
+  <text id="L-state" x="187.5" y="508" font-family="Poppins" font-size="16" font-weight="600" fill="#5C6680" text-anchor="middle">Keep holding…</text>
+  <text id="L-percent" x="187.5" y="556" font-family="Poppins" font-size="38" font-weight="800" fill="#2C3550" text-anchor="middle">68%</text>
+</g>
+<g id="L-Tip">
+  <rect id="L-Tip-card" x="26" y="580" width="323" height="62" rx="20" fill="#FFFFFF"/>
+  <circle id="L-tip-icon-bg" cx="56" cy="611" r="15" fill="#F3EEFB"/>
+  <path id="L-bulb-base" d="M51 617 h10 M53 621 h6" fill="none" stroke="#8F84C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-bulb" d="M56 598 a6.5 6.5 0 0 0-4 11.7 v1.3 h8 v-1.3 a6.5 6.5 0 0 0-4-11.7 z" fill="none" stroke="#8F84C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-tip-1" x="82" y="606" font-family="Poppins" font-size="13.5" font-weight="600" fill="#2C3550">Just be yourself!</text>
+  <text id="L-tip-2" x="82" y="624" font-family="Nunito" font-size="12.5" font-weight="400" fill="#8A93A8">There's no right or wrong way.</text>
+</g>
+<g id="L-Button-Start-Calibration">
+  <rect id="L-button-bg" x="26" y="668" width="323" height="58" rx="29" fill="#8E6B68"/>
+  <text id="L-label" x="187.5" y="704" font-family="Poppins" font-size="16.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">Start Calibration</text>
+</g>
+</svg>

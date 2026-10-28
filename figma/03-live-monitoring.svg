@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="812" viewBox="0 0 375 812" font-family="Nunito">
+<defs>
+  <linearGradient id="heroIn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF3FC"/><stop offset="1" stop-color="#D6E8F9"/></linearGradient>
+  <linearGradient id="ava" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C9D3EE"/><stop offset="1" stop-color="#A7B4DE"/></linearGradient>
+</defs>
+<rect id="L-Background" x="0" y="0" width="375" height="812" rx="0" fill="#FDF9F5"/>
+<g id="L-Status-bar">
+  <text id="L-time" x="34" y="36" font-family="Poppins" font-size="14" font-weight="600" fill="#1B2233">9:41</text>
+  <rect id="L-dynamic-island" x="131" y="11" width="113" height="31" rx="15.5" fill="#0B0B0C"/>
+  <rect id="L-signal-0" x="300" y="32" width="3" height="4" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-1" x="305" y="29.5" width="3" height="6.5" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-2" x="310" y="27" width="3" height="9" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-3" x="315" y="24" width="3" height="12" rx="1" fill="#1B2233"/>
+  <path id="L-wifi-1" d="M322 27.5a10 10 0 0 1 14 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wifi-2" d="M324.6 30.2a6.3 6.3 0 0 1 8.8 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-wifi-dot" cx="329" cy="33.3" r="1.1" fill="#1B2233"/>
+  <rect id="L-battery" x="341" y="24" width="22" height="11.5" rx="3.2" fill="#1B2233"/>
+</g>
+<g id="L-Header">
+  <text id="L-logo" x="22" y="80" font-family="Poppins" font-size="22" font-weight="800" fill="#6E4048" letter-spacing="0.8">MOVA</text>
+  <path id="L-bell" d="M296 78 a6 6 0 1 0-12 0 c0 7-3 9-3 9 h18 s-3-2-3-9" fill="none" stroke="#5C6680" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-bell-clapper" d="M288.3 90 a2 2 0 0 1-3.4 0" fill="none" stroke="#5C6680" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-avatar-bg" cx="335" cy="79" r="17" fill="url(#ava)"/>
+  <circle id="L-avatar-head" cx="335" cy="75" r="4.5" fill="#5B6899"/>
+  <path id="L-avatar-body" d="M326.5 90 a8.5 8.5 0 0 1 17 0" fill="#5B6899"/>
+</g>
+<g id="L-Greeting">
+  <text id="L-greeting" x="22" y="128" font-family="Poppins" font-size="27" font-weight="700" fill="#2F3D63">Hai, Naomi!</text>
+  <text id="L-wave-emoji" x="184" y="128" font-family="Nunito" font-size="22" font-weight="400" fill="#2C3550">👋</text>
+  <text id="L-subtitle" x="22" y="152" font-family="Nunito" font-size="14" font-weight="400" fill="#5C6680">Small habits make a big difference.</text>
+</g>
+<g id="L-Position-hero">
+  <path id="L-position-track" d="M 187.5 286 m 0 -98 a 98 98 0 1 1 0 196 a 98 98 0 1 1 0 -196" fill="none" stroke="#DFEDFA" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-position-fill" d="M 187.50 188.00 A 98 98 0 1 1 140.15 200.20" fill="none" stroke="#5AA0E0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-spark" d="M297.0 206 L310.0 201" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-spark" d="M301.0 188 L312.0 179" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-spark" d="M311.0 172 L319.0 160" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-spark" d="M78.0 206 L65.0 201" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-spark" d="M74.0 188 L63.0 179" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-spark" d="M64.0 172 L56.0 160" fill="none" stroke="#7DB6E6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-inner-disc" cx="187.5" cy="286" r="84" fill="url(#heroIn)"/>
+  <circle id="L-face" cx="187.5" cy="240" r="29" fill="#6DAEEA"/>
+  <circle id="L-eye-left" cx="178" cy="235" r="3.3" fill="#FFFFFF"/>
+  <circle id="L-eye-right" cx="197" cy="235" r="3.3" fill="#FFFFFF"/>
+  <path id="L-mouth" d="M177 245 c3.6 5.6 17.4 5.6 21 0" fill="none" stroke="#FFFFFF" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-status" x="187.5" y="298" font-family="Poppins" font-size="20" font-weight="700" fill="#2C3550" text-anchor="middle">Good Position</text>
+  <text id="L-sub-1" x="187.5" y="318" font-family="Nunito" font-size="11.5" font-weight="400" fill="#5C6680" text-anchor="middle">Keep it up!</text>
+  <text id="L-sub-2" x="187.5" y="334" font-family="Nunito" font-size="11.5" font-weight="400" fill="#5C6680" text-anchor="middle">You're doing great.</text>
+</g>
+<g id="L-Monitoring-pill">
+  <rect id="L-pill-bg" x="102.5" y="398" width="170" height="38" rx="19" fill="#FFFFFF"/>
+  <circle id="L-live-dot" cx="124" cy="417" r="5" fill="#4CC96B"/>
+  <text id="L-pill-label" x="138" y="422" font-family="Poppins" font-size="14" font-weight="600" fill="#2C3550">Monitoring Active</text>
+</g>
+<g id="L-Stat-grid">
+  <g id="L-Session-Time">
+  <rect id="L-Card-Session-Time" x="22" y="450" width="160.5" height="72" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="48" cy="476" r="15" fill="#E3EEFB"/>
+  <circle id="L-clock" cx="48" cy="476" r="9" fill="none" stroke="#3C82C9" stroke-width="2"/>
+  <path id="L-hands" d="M48 471 v5 l3.2 2" fill="none" stroke="#3C82C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Session-Time" x="72" y="474" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Session Time</text>
+  <text id="L-32-min" x="72" y="496" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">32 min</text>
+  <text id="L-Today" x="72" y="511" font-family="Nunito" font-size="10.5" font-weight="400" fill="#8A93A8">Today</text>
+</g>
+  <g id="L-Position-Score">
+  <rect id="L-Card-Position-Score" x="192.5" y="450" width="160.5" height="72" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="218.5" cy="476" r="15" fill="#E3EEFB"/>
+  <rect id="L-b1" x="210.5" y="477" width="4" height="8" rx="1.5" fill="#3C82C9"/>
+  <rect id="L-b2" x="216.5" y="471" width="4" height="14" rx="1.5" fill="#3C82C9"/>
+  <rect id="L-b3" x="222.5" y="474" width="4" height="11" rx="1.5" fill="#3C82C9"/>
+  <text id="L-Position-Score" x="242.5" y="474" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Position Score</text>
+  <text id="L-92--100" x="242.5" y="496" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">92 / 100</text>
+  <text id="L-Great" x="242.5" y="511" font-family="Nunito" font-size="10.5" font-weight="700" fill="#35B8A0">Great</text>
+</g>
+  <g id="L-Environment">
+  <rect id="L-Card-Environment" x="22" y="532" width="160.5" height="72" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="48" cy="558" r="15" fill="#FDF0DC"/>
+  <circle id="L-sun-core" cx="48" cy="558" r="4.4" fill="#FBBF52"/>
+  <path id="L-ray" d="M55.0 558.0 L58.0 558.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M52.9 562.9 L55.1 565.1" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M48.0 565.0 L48.0 568.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M43.1 562.9 L40.9 565.1" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M41.0 558.0 L38.0 558.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M43.1 553.1 L40.9 550.9" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M48.0 551.0 L48.0 548.0" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-ray" d="M52.9 553.1 L55.1 550.9" fill="none" stroke="#F2A93B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Environment" x="72" y="556" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Environment</text>
+  <text id="L-Bright" x="72" y="578" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">Bright</text>
+  <text id="L-Looks-good" x="72" y="593" font-family="Nunito" font-size="10.5" font-weight="400" fill="#8A93A8">Looks good</text>
+</g>
+  <g id="L-Activity">
+  <rect id="L-Card-Activity" x="192.5" y="532" width="160.5" height="72" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="218.5" cy="558" r="15" fill="#E3EEFB"/>
+  <rect id="L-phone" x="212.5" y="548" width="12" height="20" rx="3" fill="none" stroke="#3C82C9" stroke-width="2"/>
+  <text id="L-Activity" x="242.5" y="556" font-family="Nunito" font-size="11.5" font-weight="600" fill="#5C6680">Activity</text>
+  <text id="L-Still" x="242.5" y="578" font-family="Poppins" font-size="19" font-weight="700" fill="#2C3550">Still</text>
+  <text id="L-Monitoring-normally" x="242.5" y="593" font-family="Nunito" font-size="10.5" font-weight="700" fill="#35B8A0">Monitoring normally</text>
+</g>
+</g>
+<g id="L-Healthy-habits">
+  <rect id="L-Ribbon-card" x="22" y="614" width="331" height="62" rx="20" fill="#FFFFFF"/>
+  <path id="L-leaf-a" d="M48.0 644.0 c-6-1-10-5-10-11 7-1 10 4 10 11z" fill="#A9CEEA"/>
+  <path id="L-leaf-b" d="M48.0 641.0 c1-7 5-10 11-10-1 6-4 9-11 10z" fill="#89B8DF"/>
+  <path id="L-leaf-stem" d="M48 656 V645" fill="none" stroke="#8FBBE0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-r1" x="72" y="638" font-family="Poppins" font-size="14.5" font-weight="600" fill="#2C3550">Healthy habits today</text>
+  <text id="L-r2" x="72" y="657" font-family="Nunito" font-size="12.5" font-weight="400" fill="#8A93A8">A brighter you tomorrow</text>
+  <path id="L-heart" d="M322.0 646.6 L313.6 637.8 a4.8 4.8 0 1 1 7.0-6.9 l1.4 1.4 l1.4-1.4 a4.8 4.8 0 1 1 7.0 6.9 z" fill="none" stroke="#8F84C4" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="L-Bottom-nav">
+  <path id="L-nav-divider" d="M12 722 H363" fill="none" stroke="#EFE6DC" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-icon-home" d="M70.5 752 L79.0 741 L87.5 752 V762 h-17 z" fill="none" stroke="#6B5FA8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-nav-Home" x="79" y="782" font-family="Nunito" font-size="12.5" font-weight="700" fill="#6B5FA8" text-anchor="middle">Home</text>
+  <rect id="L-icon-bar-0" x="179.5" y="754" width="4" height="8" rx="1.5" fill="#8A93A8"/>
+  <rect id="L-icon-bar-1" x="186.0" y="748" width="4" height="14" rx="1.5" fill="#8A93A8"/>
+  <rect id="L-icon-bar-2" x="192.5" y="751" width="4" height="11" rx="1.5" fill="#8A93A8"/>
+  <text id="L-nav-History" x="187.5" y="782" font-family="Nunito" font-size="12.5" font-weight="700" fill="#8A93A8" text-anchor="middle">History</text>
+  <circle id="L-icon-head" cx="296" cy="746" r="3.8" fill="none" stroke="#8A93A8" stroke-width="1.9"/>
+  <path id="L-icon-body" d="M288.5 762 a7.5 7.5 0 0 1 15 0" fill="none" stroke="#8A93A8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-nav-Profile" x="296" y="782" font-family="Nunito" font-size="12.5" font-weight="700" fill="#8A93A8" text-anchor="middle">Profile</text>
+</g>
+</svg>

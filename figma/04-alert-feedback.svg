@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="812" viewBox="0 0 375 812" font-family="Nunito">
+<defs>
+  <linearGradient id="alertBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF3F2"/><stop offset="1" stop-color="#FDF9F5"/></linearGradient>
+</defs>
+<rect id="L-Background" x="0" y="0" width="375" height="812" rx="0" fill="url(#alertBg)"/>
+<g id="L-Status-bar">
+  <text id="L-time" x="34" y="36" font-family="Poppins" font-size="14" font-weight="600" fill="#1B2233">9:41</text>
+  <rect id="L-dynamic-island" x="131" y="11" width="113" height="31" rx="15.5" fill="#0B0B0C"/>
+  <rect id="L-signal-0" x="300" y="32" width="3" height="4" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-1" x="305" y="29.5" width="3" height="6.5" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-2" x="310" y="27" width="3" height="9" rx="1" fill="#1B2233"/>
+  <rect id="L-signal-3" x="315" y="24" width="3" height="12" rx="1" fill="#1B2233"/>
+  <path id="L-wifi-1" d="M322 27.5a10 10 0 0 1 14 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wifi-2" d="M324.6 30.2a6.3 6.3 0 0 1 8.8 0" fill="none" stroke="#1B2233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-wifi-dot" cx="329" cy="33.3" r="1.1" fill="#1B2233"/>
+  <rect id="L-battery" x="341" y="24" width="22" height="11.5" rx="3.2" fill="#1B2233"/>
+</g>
+<g id="L-Header">
+  <text id="L-logo" x="24" y="82" font-family="Poppins" font-size="20" font-weight="800" fill="#6E4048" letter-spacing="0.7">MOVA</text>
+  <path id="L-close" d="M327 74 l14 14 M341 74 l-14 14" fill="none" stroke="#5C6680" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="L-Illustration">
+  <ellipse id="halo" cx="170" cy="190" rx="74" ry="58" fill="#E2E4F3"/>
+  <g id="phone" transform="rotate(-11 170 186)"><rect id="L-phone-body" x="144" y="140" width="54" height="94" rx="12" fill="#FDFCFB" stroke="#7A7FA4" stroke-width="3.2"/><rect id="L-phone-speaker" x="163" y="146" width="16" height="3.4" rx="1.7" fill="#7A7FA4"/></g>
+  <path id="L-wave-l1" d="M122 162 c-4 6-4 14 0 20" fill="none" stroke="#9AA0C6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wave-l2" d="M112 155 c-7 10-7 24 0 34" fill="none" stroke="#9AA0C6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wave-r1" d="M222 162 c4 6 4 14 0 20" fill="none" stroke="#9AA0C6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="L-wave-r2" d="M232 155 c7 10 7 24 0 34" fill="none" stroke="#9AA0C6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-badge" cx="230" cy="144" r="24" fill="#8A5A5E"/>
+  <path id="L-excl-bar" d="M230 133 v14" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle id="L-excl-dot" cx="230" cy="154" r="2.6" fill="#FFFFFF"/>
+</g>
+<g id="L-Title">
+  <path id="L-pin-icon" d="M73 291 l7 7 M74.5 292.5 l-7 4 -4 8 8-4 4-7 M66.5 304.5 l-5 5" fill="none" stroke="#8A5A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-title" x="200" y="302" font-family="Poppins" font-size="24" font-weight="700" fill="#2C3550" text-anchor="middle">Needs Adjustment</text>
+  <text id="L-w1" x="187.5" y="330" font-family="Nunito" font-size="13.5" font-weight="400" fill="#5C6680" text-anchor="middle">You've been holding this position</text>
+  <text id="L-w2" x="187.5" y="350" font-family="Nunito" font-size="13.5" font-weight="400" fill="#5C6680" text-anchor="middle">for a while (15 sec).</text>
+</g>
+<g id="L-Raise-your-phone-slightly">
+  <rect id="L-Card-Raise-your-phone-slightly" x="24" y="378" width="327" height="58" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="54" cy="407.0" r="15" fill="#EAF2FC"/>
+  <path id="L-arrow-up" d="M54 414.0 V400.0 M48 406.0 l6-6 6 6" fill="none" stroke="#3C82C9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Raise-your-phone-slightly" x="82" y="404" font-family="Poppins" font-size="14.5" font-weight="600" fill="#2C3550">Raise your phone slightly</text>
+  <text id="L-sub" x="82" y="422" font-family="Nunito" font-size="12.5" font-weight="400" fill="#8A93A8">Bring it closer to eye level.</text>
+</g>
+<g id="L-Tilt-slightly-to-the-right">
+  <rect id="L-Card-Tilt-slightly-to-the-right" x="24" y="446" width="327" height="70" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="54" cy="481.0" r="15" fill="#EAF2FC"/>
+  <path id="L-arrow-right" d="M47 481.0 h13 M60 475.5 l5.5 5.5-5.5 5.5" fill="none" stroke="#3C82C9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="L-Tilt-slightly-to-the-right" x="82" y="472" font-family="Poppins" font-size="14.5" font-weight="600" fill="#2C3550">Tilt slightly to the right</text>
+  <text id="L-sub" x="82" y="490" font-family="Nunito" font-size="12.5" font-weight="400" fill="#8A93A8">Try to keep your screen centered</text>
+  <text id="L-sub2" x="82" y="506" font-family="Nunito" font-size="12.5" font-weight="400" fill="#8A93A8">in front of you.</text>
+</g>
+<g id="L-Take-a-short-break">
+  <rect id="L-Card-Take-a-short-break" x="24" y="528" width="327" height="58" rx="20" fill="#FFFFFF"/>
+  <circle id="L-icon-bg" cx="54" cy="557.0" r="15" fill="#EAF2FC"/>
+  <rect id="L-pause-l" x="48" y="549.0" width="4" height="16" rx="1.6" fill="#3C82C9"/>
+  <rect id="L-pause-r" x="56" y="549.0" width="4" height="16" rx="1.6" fill="#3C82C9"/>
+  <text id="L-Take-a-short-break" x="82" y="554" font-family="Poppins" font-size="14.5" font-weight="600" fill="#2C3550">Take a short break</text>
+  <text id="L-sub" x="82" y="572" font-family="Nunito" font-size="12.5" font-weight="400" fill="#8A93A8">Give your eyes a rest.</text>
+</g>
+<g id="L-Button-Got-it">
+  <rect id="L-button-bg" x="24" y="612" width="327" height="58" rx="29" fill="#8E6B68"/>
+  <text id="L-label" x="187.5" y="648" font-family="Poppins" font-size="16.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">Got it!</text>
+</g>
+<g id="L-Snooze-link">
+  <text id="L-snooze" x="187.5" y="696" font-family="Nunito" font-size="13.5" font-weight="700" fill="#8E6B68" text-anchor="middle">Remind me in 5 minutes</text>
+  <path id="L-underline" d="M113 701 H262" fill="none" stroke="#8E6B68" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
